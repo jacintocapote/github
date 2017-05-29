@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * Load github library.
+ */
+function github_load_library() {
+  $path = libraries_get_path('github-php-client') . '/client/GitHubClient.php';
+  require_once($path);
+}
