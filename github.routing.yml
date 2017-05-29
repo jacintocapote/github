@@ -1,0 +1,7 @@
+github.settings:
+  path: '/admin/config/services/github'
+  defaults:
+    _form: '\Drupal\github\Form\githubSettingsForm'
+    _title: 'Github integration settings'
+  requirements:
+    _permission: 'administer site configuration'
