@@ -1,0 +1,32 @@
+{
+    "name": "drupal/github",
+    "description": "Enables the creation of webforms and questionnaires.",
+    "type": "drupal-module",
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "homepage": "https://github.com/jacintocapote/github",
+    "authors": [
+        {
+            "name": "Jacinto Capote Robles (fastangel)",
+            "homepage": "https://www.drupal.org/u/fastangel",
+            "role": "Maintainer"
+        }
+    ],
+    "repositories": [
+      {
+        "type": "package",
+        "package": {
+          "name": "tan-tan-kanarek/github-php-client",
+          "version": "1.0.0",
+          "type": "drupal-library",
+          "dist": {
+            "url": "https://github.com/tan-tan-kanarek/github-php-client/archive/1.0.0.zip",
+            "type": "zip"
+          }
+        }
+      }
+    ],
+    "require": {
+        "tan-tan-kanarek/github-php-client": "1.0.0"
+    }
+}
