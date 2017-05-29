@@ -1,0 +1,3 @@
+services:
+  github.githubgetclient:
+    class: Drupal\github\GithubGetClient

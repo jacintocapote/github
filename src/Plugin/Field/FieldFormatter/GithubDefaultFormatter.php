@@ -21,45 +21,38 @@ class GithubDefaultFormatter extends FormatterBase {
   /**
    * {@inheritdoc}
    */
-  public function settingsSummary() {
-    $summary = array();
-    $settings = $this->getSettings();
-
-    $summary[] = t('Displays the random string.');
-
-    return $summary;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-    github_load_library();
     $element = array();   
  
     try {
-      $client = new \GithubClient();
+      $client = \Drupal::service('github.githubgetclient')->GithubGetClient();
 
       foreach ($items as $delta => $item) {
         $username = $item->value;
+        $githubuser = $client->users->getSingleUser($username);
         $repos = $client->repos->listUserRepositories($username, 'owner');
+        $avatar_url = $githubuser->getAvatarUrl($username);
         $stargazer = 0;
 
         if (!empty($repos)) {
-          foreach ($repos as $id_repo => $repo) {
+          foreach ($repos as $repo) {
             //We need authentication
-            $stargazer += $client->activity->starring->listStargazers($username, $id_repo);
+            $extra_info = $client->repos->get($username, $repo->getName());
+            $stargazer += $extra_info->getStargazers();
           }
         }
        
         // Render each element as markup.
-        $element[$delta] = array(
-          '#type' => 'markup',
-          '#markup' => $item->value,
-        );
+        $element[$delta] = [
+          '#theme' => 'github_formatter',
+          '#avatar' => $avatar_url,
+          '#stargazer' => $stargazer,
+          '#username' => $username,
+        ];
       }
 
     } catch(\Exception $e) { }
+
 
     return $element;
   }

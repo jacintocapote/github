@@ -1,0 +1,9 @@
+<div class="field-github">
+  {% if avatar %}
+    <img src="{{ avatar }}" />
+  {% endif %}
+  </br>
+  <span class="github-username"><strong>{{ 'Username:' | trans }}</strong> {{ link(username, "http://github.com/'#{username}", {'class': ['github-link']}) }}</span>
+  </br>
+  <span class="github-stargazer"><strong>{{ 'Total Stargazer:' | trans }}</strong> {{ stargazer }}</span>
+</div>

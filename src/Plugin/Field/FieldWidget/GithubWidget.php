@@ -40,9 +40,6 @@ class GithubWidget extends WidgetBase {
    * Validate the github username field.
    */
   public function validate($element, FormStateInterface $form_state) {
-    //Load github library.
-    github_load_library();
-
     $value = $element['#value'];
     if (strlen($value) == 0) {
       $form_state->setValueForElement($element, '');
@@ -50,9 +47,8 @@ class GithubWidget extends WidgetBase {
     }
 
     try {
-      $client = new \GithubClient();
-
       //Is a valid github user?
+      $client = \Drupal::service('github.githubgetclient')->GithubGetClient();
       $githubuser = $client->users->getSingleUser($value);
     } catch(\Exception $e) {
       $form_state->setError($element, t("The github username is invalid. Please insert a valid username."));
