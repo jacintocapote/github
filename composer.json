@@ -12,21 +12,8 @@
             "role": "Maintainer"
         }
     ],
-    "repositories": [
-      {
-        "type": "package",
-        "package": {
-          "name": "tan-tan-kanarek/github-php-client",
-          "version": "1.0.1",
-          "type": "drupal-library",
-          "dist": {
-            "url": "https://github.com/jacintocapote/github-php-client/archive/1.0.1.zip",
-            "type": "zip"
-          }
-        }
-      }
-    ],
     "require": {
-        "tan-tan-kanarek/github-php-client": "1.0.1"
+        "php-http/guzzle6-adapter": "^1.0",
+        "knplabs/github-api": "~2.4.0"
     }
 }

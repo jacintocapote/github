@@ -8,6 +8,7 @@
 namespace Drupal\github;
 
 use Drupal\Core\Config\ConfigFactory;
+use Github;
 
 class GithubGetClient {
   protected $client;
@@ -16,13 +17,11 @@ class GithubGetClient {
    * On construct asign github api token.
    */
   public function __construct(ConfigFactory $config_factory) {
-    github_load_library();
     $config = $config_factory->get('github.settings');
     $api_token = $config->get('token');
 
-    $client = new \GithubClient();
-    $client->setAuthType(\GitHubClientBase::GITHUB_AUTH_TYPE_OAUTH_BASIC);
-    $client->setOauthKey($api_token);
+    $client = new \Github\Client();
+    $client->authenticate($api_token, NULL, Github\Client::AUTH_HTTP_TOKEN);
     $this->client = $client;
   }
 

@@ -49,7 +49,7 @@ class GithubWidget extends WidgetBase {
     try {
       //Is a valid github user?
       $client = \Drupal::service('github.githubgetclient')->GithubGetClient();
-      $githubuser = $client->users->getSingleUser($value);
+      $user = $client->api('user')->show($value);
     } catch(\Exception $e) {
       $form_state->setError($element, t("The github username is invalid. Please insert a valid username."));
     }
