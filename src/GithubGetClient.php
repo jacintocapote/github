@@ -7,15 +7,17 @@
 
 namespace Drupal\github;
 
+use Drupal\Core\Config\ConfigFactory;
+
 class GithubGetClient {
   protected $client;
 
   /**
    * On construct asign github api token.
    */
-  public function __construct() {
+  public function __construct(ConfigFactory $config_factory) {
     github_load_library();
-    $config = $this->config('github.settings');
+    $config = $config_factory->get('github.settings');
     $api_token = $config->get('token');
 
     $client = new \GithubClient();
@@ -29,5 +31,9 @@ class GithubGetClient {
    */
   public function GithubGetClient() {
     return $this->client;
+  }
+
+  public function getServiceExampleValue() {
+    return 'hola';
   }
 }

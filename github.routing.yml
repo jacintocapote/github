@@ -5,3 +5,21 @@ github.settings:
     _title: 'Github integration settings'
   requirements:
     _permission: 'administer site configuration'
+github.tenlastweek:
+  path: '/github/ten-last-week'
+  defaults:
+    _controller: '\Drupal\github\Controller\GithubServiceController::TenLastWeek'
+  requirements:
+    _access: 'TRUE'
+github.tenhottest:
+  path: '/github/ten-hottest'
+  defaults:
+    _controller: '\Drupal\github\Controller\GithubServiceController::TenHottest'
+  requirements:
+    _access: 'TRUE'
+github.pepperpots:
+  path: '/github/pepper'
+  defaults:
+    _controller: '\Drupal\github\Controller\GithubServiceController::Pepper'
+  requirements:
+    _access: 'TRUE'

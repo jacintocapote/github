@@ -1,3 +1,4 @@
 services:
   github.githubgetclient:
     class: Drupal\github\GithubGetClient
+    arguments: ['@config.factory']
