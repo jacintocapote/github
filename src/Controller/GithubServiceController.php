@@ -43,15 +43,37 @@ class GithubServiceController extends ControllerBase {
     );
   }
 
+  /**
+   * Routing callback to show top 10 issues.
+   */
   public function TenLastWeek() {
+    $client = $this->serviceGithub->GithubGetClient();
+
+    //Do a search to get 10 issues, created in the last week, with the most comments for PHP, Javascript, Ruby
+    //With setPerPage we improve performance to get only first 10 items.
+    $created = date('Y-m-d', strtotime('-1 week'));
+    $issues = $client->api('search')->setPerPage(10)->issues('type:issue language:php language:javascript language:ruby created:">' . $created  . '"', 'comments', 'desc');
+
     return [
-      '#markup' => $this->serviceGithub->getServiceExampleValue()
+      '#theme' => 'github_issues',
+      '#issues' => $issues['items'],
     ];
   }
 
+  /**
+   * Routing callback to show top 10 repos.
+   */
   public function TenHottest() {
+    $client = $this->serviceGithub->GithubGetClient();
+
+    //Do a search to get 10 repos (hottest), created in the last week for PHP, Javascript, Ruby
+    //With setPerPage we improve performance to get only first 10 items.
+    $created = date('Y-m-d', strtotime('-1 week'));
+    $repos = $client->api('search')->setPerPage(10)->repositories('language:php language:javascript language:ruby created:">' . $created  . '"', 'stars', 'desc');
+
     return [
-      '#markup' => $this->serviceGithub->getServiceExampleValue()
+      '#theme' => 'github_repos',
+      '#repos' => $repos['items'],
     ];
   }
 

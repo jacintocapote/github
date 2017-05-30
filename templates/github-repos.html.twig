@@ -1,0 +1,33 @@
+<div class="github topten repos lastweek">
+  <p class="github-info">
+    {% trans %}
+      This report will show the top 10 hottest repositories (from github), created in the last week, with the most amount of starts for the following languages:
+        <ul>
+          <li>PHP</li>
+          <li>Javascript</li>
+          <li>Ruby</li>
+        </ul>
+    {% endtrans %}
+  </p>
+
+  <h2>{{ 'Report' | trans }} </h2>
+
+  {% if repos|length %}
+    {% for repo in repos %}
+      <h3>{{ repo.name }}</h3>
+      <ul>
+        <li><strong> {{ 'Repo URL: ' | trans }}</strong>{{ link(repo.full_name, repo.html_url) }}</li>
+        <li><strong> {{ 'Description: ' | trans }}</strong>{{ repo.description }}</li>
+        <li><strong> {{ 'Owner: ' | trans }}</strong>{{ link(repo.owner.login ,repo.owner.html_url) }}</li>
+        <li><strong> {{ 'Total stars: ' | trans }}</strong>{{ repo.stargazers_count }}</li>
+        <li><strong> {{ 'Created at: ' | trans }}</strong>{{ repo.created_at|date("Y/m/d") }}</li>
+      </ul>
+    {% endfor %}
+  {% else %}
+    <p>
+    {% trans %}
+      We have some problems to get the info from <strong>Github</strong>. Please wait some time and reload the page.
+    {% endtrans %}
+    </p>
+  {% endif %}
+</div>

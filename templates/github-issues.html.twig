@@ -1,0 +1,32 @@
+<div class="github topten issues lastweek">
+  <p class="github-info">
+    {% trans %}
+      This report will show the top 10 issues (from github), created in the last week, with the most comments for the following languages:
+        <ul>
+          <li>PHP</li>
+          <li>Javascript</li>
+          <li>Ruby</li>
+        </ul>
+    {% endtrans %}
+  </p>
+
+  <h2>{{ 'Report' | trans }} </h2>
+
+  {% if issues|length %}
+    {% for issue in issues %}
+      <h3>{{ issue.title }}</h3>
+      <ul>
+        <li><strong> {{ 'URL issue: ' | trans }}</strong>{{ link(issue.html_url, issue.html_url) }}</li>
+        <li><strong> {{ 'Owner: ' | trans }}</strong>{{ link(issue.user.login ,issue.user.html_url) }}</li>
+        <li><strong> {{ 'Total comments: ' | trans }}</strong>{{ issue.comments }}</li>
+        <li><strong> {{ 'Created at: ' | trans }}</strong>{{ issue.created_at|date("Y/m/d") }}</li>
+      </ul>
+    {% endfor %}
+  {% else %}
+    <p>
+    {% trans %}
+      We have some problems to get the info from <strong>Github</strong>. Please wait some time and reload the page.
+    {% endtrans %}
+    </p>
+  {% endif %}
+</div>

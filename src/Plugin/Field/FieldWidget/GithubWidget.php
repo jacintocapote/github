@@ -24,16 +24,16 @@ class GithubWidget extends WidgetBase {
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $value = isset($items[$delta]->value) ? $items[$delta]->value : '';
-    $element += array(
+    $element += [
       '#type' => 'textfield',
       '#default_value' => $value,
       '#size' => 60,
       '#maxlength' => 255,
-      '#element_validate' => array(
+      '#element_validate' => [
         array($this, 'validate'),
-      ),
-    );
-    return array('value' => $element);
+      ],
+    ];
+    return ['value' => $element];
   }
 
   /**

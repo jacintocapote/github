@@ -8,5 +8,11 @@ function github_theme($existing, $type, $theme, $path) {
     'github_formatter' => [
       'variables' => ['avatar' => NULL, 'username' => NULL, 'stargazer' => NULL],
     ],
+    'github_issues' => [
+      'variables' => ['issues' => NULL],
+    ],
+    'github_repos' => [
+      'variables' => ['repos' => NULL],
+    ],
   ];
 }

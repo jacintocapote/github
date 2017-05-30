@@ -9,17 +9,20 @@ github.tenlastweek:
   path: '/github/ten-last-week'
   defaults:
     _controller: '\Drupal\github\Controller\GithubServiceController::TenLastWeek'
+    _title: 'Top 10 issues last week'
   requirements:
     _access: 'TRUE'
 github.tenhottest:
   path: '/github/ten-hottest'
   defaults:
     _controller: '\Drupal\github\Controller\GithubServiceController::TenHottest'
+    _title: 'Top 10 repos'
   requirements:
     _access: 'TRUE'
 github.pepperpots:
   path: '/github/pepper'
   defaults:
     _controller: '\Drupal\github\Controller\GithubServiceController::Pepper'
+    _title: 'Funding report'
   requirements:
     _access: 'TRUE'
