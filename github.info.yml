@@ -2,7 +2,3 @@ name: Github
 type: module
 description: Github integration
 core: 8.x
-dependencies:
-  - libraries
-library_dependencies:
-  - github-php-client
