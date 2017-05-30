@@ -29,29 +29,28 @@ class GithubDefaultFormatter extends FormatterBase {
 
       foreach ($items as $delta => $item) {
         $username = $item->value;
-        $githubuser = $client->users->getSingleUser($username);
-        $repos = $client->repos->listUserRepositories($username, 'owner');
-        $avatar_url = $githubuser->getAvatarUrl($username);
+        $githubuser = $client->api('user')->show($username);
+        $repos = $client->api('user')->repositories($username);
         $stargazer = 0;
 
         if (!empty($repos)) {
           foreach ($repos as $repo) {
-            //We need authentication
-            $extra_info = $client->repos->get($username, $repo->getName());
-            $stargazer += $extra_info->getStargazers();
+            $stargazer += $repo['stargazers_count'];
           }
         }
        
         // Render each element as markup.
         $element[$delta] = [
           '#theme' => 'github_formatter',
-          '#avatar' => $avatar_url,
+          '#avatar' => $githubuser['avatar_url'],
           '#stargazer' => $stargazer,
           '#username' => $username,
         ];
       }
 
-    } catch(\Exception $e) { }
+    } catch(\Exception $e) {
+      //TODO: Add watchdog message.
+    }
 
 
     return $element;
