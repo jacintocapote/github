@@ -29,6 +29,7 @@ class GithubServiceController extends ControllerBase {
    * {@inheritdoc}
    */
   public function __construct(GithubGetClient $serviceGithub, ClientInterface $http_client) {
+    //We don't need http client for anything because we are using external library. But is injected to show as example.
     $this->serviceGithub = $serviceGithub;
     $this->http_client = $http_client;
   }
@@ -87,33 +88,33 @@ class GithubServiceController extends ControllerBase {
     //With setPerPage we improve performance to get only first 10 items.
     $created = date('Y-m-d', strtotime('-1 week'));
     $repos = $client->api('search')->setPerPage(10)->repositories('created:">' . $created  . '"', 'stars', 'desc');
-    $report = $this->PepperCalculateFunding($repos); dpm($repos);
+    $report = $this->PepperCalculateFunding($repos['items']);
 
     return [
-      '#theme' => 'github_projects',
+      '#theme' => 'github_funding',
       '#report' => $report,
     ];
   }
 
   private function PepperCalculateFunding($repos) {
     $data = [];
-
-    /*foreach ($repos as $repo) {
+ 
+    foreach ($repos as $repo) {
       $project = [
-        'name' => ,
-        'url' => ,
-        'stars' => ,
-        'language' => ,
-        'watcher' =>,
-        'fork' =>,
-        'wiki' =>,
-        'downloaded' =>,
-        'issues' =>,
-        'total' =>,  
+        'name' => $repo['name'],
+        'url' => $repo['html_url'],
+        'stars' => $repo['stargazers_count'],
+        'language' => $repo['language'],
+        'watcher' => $repo['watchers'],
+        'fork' => $repo['forks_count'],
+        'wiki' => ($repo['has_wiki'] ? 50 : 0), 
+        'downloaded' => ($repo['has_downloads'] ? 100 : 0),
+        'issues' => ($repo['has_issues'] ? 10 : 0),
       ];
 
+      //Total will be calculate on the template.
       $data[] = $project;
-    }*/
+    }
 
     return $data;
   }

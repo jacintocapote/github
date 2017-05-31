@@ -23,6 +23,6 @@ github.pepperpots:
   path: '/github/pepper'
   defaults:
     _controller: '\Drupal\github\Controller\GithubServiceController::Pepper'
-    _title: 'Funding report'
+    _title: 'Funding report for Mrs Pepper Pots'
   requirements:
     _access: 'TRUE'

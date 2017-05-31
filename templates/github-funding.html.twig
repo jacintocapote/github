@@ -1,28 +1,51 @@
-<div class="github topten repos lastweek">
+<div class="github report-pepper lastweek">
   <p class="github-info">
     {% trans %}
-      This report will show the top 10 hottest repositories (from github), created in the last week, with the most amount of starts for the following languages:
-        <ul>
-          <li>PHP</li>
-          <li>Javascript</li>
-          <li>Ruby</li>
-        </ul>
+      This report will show a funding report for Mrs Pepper Pots that list the 10 hottest projects to the following specifications:
+      <ul>
+        <li>1 dollar per watcher of the project</li>
+        <li>1 dollar per fork of the project</li>
+        <li>50 dollars if the project has a wiki</li>
+        <li>100 dollars if the project has been downloaded</li>
+        <li>10 dollars if any issues have been created</li>
+      </ul>
     {% endtrans %}
   </p>
 
   <h2>{{ 'Report' | trans }} </h2>
 
-  {% if repos|length %}
-    {% for repo in repos %}
-      <h3>{{ repo.name }}</h3>
-      <ul>
-        <li><strong> {{ 'Repo URL: ' | trans }}</strong>{{ link(repo.full_name, repo.html_url) }}</li>
-        <li><strong> {{ 'Description: ' | trans }}</strong>{{ repo.description }}</li>
-        <li><strong> {{ 'Owner: ' | trans }}</strong>{{ link(repo.owner.login ,repo.owner.html_url) }}</li>
-        <li><strong> {{ 'Total stars: ' | trans }}</strong>{{ repo.stargazers_count }}</li>
-        <li><strong> {{ 'Created at: ' | trans }}</strong>{{ repo.created_at|date("Y/m/d") }}</li>
-      </ul>
-    {% endfor %}
+  {% if report|length %}
+    {% set total = 0 %}
+    <table>
+      <tr>
+        <th>{{ 'Project' | trans  }}</th>
+        <th>{{ 'Stars' | trans  }}</th>
+        <th>{{ 'Language' | trans  }}</th>
+        <th>{{ 'Watchers' | trans  }}</th>
+        <th>{{ 'Forks' | trans  }}</th>
+        <th>{{ 'Wiki' | trans  }}</th>
+        <th>{{ 'Downloaded' | trans  }}</th>
+        <th>{{ 'Issuses' | trans  }}</th>
+        <th>{{ 'Total' | trans  }}</th>
+      </tr>
+      {% for repo in report %}
+        <tr>
+          <td>{{ link(repo.name, repo.url) }}</td>
+          <td>{{repo.stars }}</td>
+          <td>{{ repo.language }}</td>
+          <td>{{ repo.watcher }}$</td>
+          <td>{{ repo.fork }}$</td>
+          <td>{{ repo.wiki }}$</td>
+          <td>{{ repo.downloaded }}$</td>
+          <td>{{ repo.issues}}$</td>
+          {% set total_project = repo.watcher + repo.fork + repo.wiki + repo.downloaded + repo.issues %}
+          {% set total = total + total_project %}
+          <td><strong>{{ total_project }}$</strong></td>
+        </tr>
+      {% endfor %}
+
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><strong>{{ 'Grand Total:' | trans }} <span class="grand-total"><span class="value">{{ total }}</span><span class="currency">$</span></span></strong></td></tr>
+    </table>
   {% else %}
     <p>
     {% trans %}
