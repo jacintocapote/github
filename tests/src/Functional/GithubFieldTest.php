@@ -2,9 +2,6 @@
 
 namespace Drupal\Tests\github\Functional;
 
-use Drupal\github\Plugin\Field\FieldType;
-use Drupal\github\Plugin\Field\FieldWidget;
-use Drupal\github\Plugin\Field\FieldFormatter;
 use Drupal\Core\Entity\Entity\EntityFormDisplay;
 use Drupal\Core\Entity\Entity\EntityViewDisplay;
 use Drupal\field\Entity\FieldConfig;
@@ -97,11 +94,11 @@ class GithubFieldTest extends BrowserTestBase {
   }
 
   /**
-   * Test to check github field is working and checking github username is valid.
+   * Test to check github field exists and checking github username is valid.
    */
   public function testFieldGithubCreateField() {
     $value = 'asdfñlkasjfñlaskjfasasdas';
-    
+
     // Display creation form.
     $this->drupalGet('entity_test/add');
 
@@ -114,10 +111,10 @@ class GithubFieldTest extends BrowserTestBase {
     ];
     $this->drupalPostForm(NULL, $edit, 'Save');
 
-    //Check the username inserted is a invalid user on github.
+    // Check the username inserted is a invalid user on github.
     $this->assertSession()->pageTextContains(sprintf('The github username %s is invalid. Please insert a valid username.', $value));
 
-    //Change username to a valid github user.
+    // Change username to a valid github user.
     $value = 'jacintocapote';
 
     $edit = [
@@ -131,4 +128,5 @@ class GithubFieldTest extends BrowserTestBase {
     $this->assertSession()->pageTextContains(sprintf('entity_test %s has been created.', $id));
 
   }
+
 }

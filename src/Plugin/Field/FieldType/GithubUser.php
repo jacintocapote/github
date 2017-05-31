@@ -3,7 +3,6 @@
 namespace Drupal\github\Plugin\Field\FieldType;
 
 use Drupal\Core\Field\FieldItemBase;
-use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
 use Drupal\Core\TypedData\DataDefinition;
 
@@ -17,7 +16,6 @@ use Drupal\Core\TypedData\DataDefinition;
  *  default_widget = "github_widget",
  * )
  */
-
 class GithubUser extends FieldItemBase {
 
   /**
@@ -25,7 +23,7 @@ class GithubUser extends FieldItemBase {
    */
   public static function schema(FieldStorageDefinitionInterface $field_definition) {
     return array(
-      // columns contains the values that the field will store
+      // Columns contains the values that the field will store.
       'columns' => array(
         'value' => array(
           'type' => 'text',

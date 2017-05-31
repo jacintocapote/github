@@ -22,10 +22,10 @@ class GithubDefaultFormatter extends FormatterBase {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-    $element = array();   
- 
+    $element = array();
+
     try {
-      $client = \Drupal::service('github.githubgetclient')->GithubGetClient();
+      $client = \Drupal::service('github.githubgetclient')->githubGetClient();
 
       foreach ($items as $delta => $item) {
         $username = $item->value;
@@ -38,7 +38,7 @@ class GithubDefaultFormatter extends FormatterBase {
             $stargazer += $repo['stargazers_count'];
           }
         }
-       
+
         // Render each element as markup.
         $element[$delta] = [
           '#theme' => 'github_formatter',
@@ -48,10 +48,9 @@ class GithubDefaultFormatter extends FormatterBase {
         ];
       }
 
-    } catch(\Exception $e) {
-      //TODO: Add watchdog message.
     }
-
+    catch (\Exception $e) {
+    }
 
     return $element;
   }

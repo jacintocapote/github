@@ -8,15 +8,16 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * A basic form to save github token.
  */
-class githubSettingsForm extends ConfigFormBase {
-  /** 
+class GithubSettingsForm extends ConfigFormBase {
+
+  /**
    * {@inheritdoc}
    */
   public function getFormId() {
     return 'github_token_settings';
   }
 
-  /** 
+  /**
    * {@inheritdoc}
    */
   protected function getEditableConfigNames() {
@@ -25,7 +26,7 @@ class githubSettingsForm extends ConfigFormBase {
     ];
   }
 
-  /** 
+  /**
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
@@ -36,12 +37,12 @@ class githubSettingsForm extends ConfigFormBase {
       '#title' => $this->t('Github API Token'),
       '#default_value' => $config->get('token'),
       '#description' => $this->t('Please access to https://github.com/settings/tokens to get more information'),
-    );  
+    );
 
     return parent::buildForm($form, $form_state);
   }
 
-  /** 
+  /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {

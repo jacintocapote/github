@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * General functions.
+ */
+
+/**
  * Implements hook_theme().
  */
 function github_theme($existing, $type, $theme, $path) {

@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Functions used install, uninstall, ....
+ */
+
+/**
  * Implements hook_uninstall().
  */
 function github_uninstall() {

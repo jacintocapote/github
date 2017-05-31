@@ -8,21 +8,21 @@ github.settings:
 github.tenlastweek:
   path: '/github/ten-last-week'
   defaults:
-    _controller: '\Drupal\github\Controller\GithubServiceController::TenLastWeek'
+    _controller: '\Drupal\github\Controller\GithubServiceController::tenLastWeek'
     _title: 'Top 10 issues last week'
   requirements:
     _access: 'TRUE'
 github.tenhottest:
   path: '/github/ten-hottest'
   defaults:
-    _controller: '\Drupal\github\Controller\GithubServiceController::TenHottest'
+    _controller: '\Drupal\github\Controller\GithubServiceController::tenHottest'
     _title: 'Top 10 repos'
   requirements:
     _access: 'TRUE'
 github.pepperpots:
   path: '/github/pepper'
   defaults:
-    _controller: '\Drupal\github\Controller\GithubServiceController::Pepper'
+    _controller: '\Drupal\github\Controller\GithubServiceController::pepper'
     _title: 'Funding report for Mrs Pepper Pots'
   requirements:
     _access: 'TRUE'
