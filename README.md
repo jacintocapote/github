@@ -77,10 +77,11 @@ If you access to */github/pepper* you can see this report. This report process t
 
 ## Consideration for developers
 
-1. This module use a custom service based on the library [1]. From this service you can call to *githubGetClient* to get a object from the external library and then do any call over githubAPI.
+1. This module use a custom service (*github.githubgetclient*) based on the library [1]. From this service you can call to *githubGetClient* to get a object from the external library and then do any call over githubAPI. One note about the service. Service use two objects injected a object from the API library and another from http client. The object from http client isn't used at the moment but was added for a futher extension.
 2. The service use a variable to set a token API to call some api methods. This functionality can be extendend integrating another variable for username/password and then allow create/delete/star, ..... repo, issues, ...
 3. All routing system is over the class *GithubServiceController*
-4. After do any change is very important check code style with [5]
+4. We implement some basic twig template to show the basic pages. The funding template use a integration with a jquery library. Feel you free to use in another part of the module. 
+5. After do any change is very important check code style with [5]
 
 **NOTE**: I supposs you have a fresh drupal 8 installed with standar profile.
 
