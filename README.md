@@ -25,10 +25,10 @@ This project is a module implementation for drupal 8. The module is a integratio
 
 **NOTE**: This module implement a service. You can use the service to use any method implemented with the library [1] you can check [3] for more info.
 
-## Because Drupal 8
+## Because Drupal 8
 
-I used drupal 8 because is the best solution to integrate a API. Drupal 8 include so good components from symfony get a better performance (Dependecy injection, ....) and more maintable code.
-TODO: Extend this section
+I used drupal 8 because is the best solution to integrate a new API. Drupal 8 include so good components from symfony to get a better performance (Dependecy injection, ....) and more maintable code.
+With drupal 7 is more difficult to integrate a API or a POD system. If you want to integrate a library with symfony components, .... the best solution is D8.
 
 ## How test functional requirements
 
@@ -49,7 +49,10 @@ TODO: Add some pictures
 
 ## Functional Test
 
-TODO: Add information about because I selected Functional Test and explain about execute both methods
+The functional test check two things. First thing is you can add a field github to a entity. And the second is the field is validating the github username. For execute functional you can do via browser (enabling testing module) or via console with (for example with this command from a local environment):
+```
+php core/scripts/run-tests.sh --verbose --url http://drupal-8-3-2.dd:8083/  --dburl 'mysql://drupaluser@127.0.0.1:33067/drupal_8_3_2' --color --file modules/custom/github/tests/src/Functional/GithubFieldTest.php
+```
 
 ## Funding report
 
@@ -70,13 +73,20 @@ Tony Stark has decided to fund GitHub projects based on the following rules:
   6. A grand total row which sums the investment in each all projects
 * The totals for each project should be listed in USD
 * The grand total should be listed in USD, and converted on the fly to GBP (Pounds), EUR (Euros), and CHF (Swiss Francs)
+* 
+If you access to */github/pepper* you can see this report. This report process the information from Github API show as table. For the currency conversion was used a jquery library [4]. This library use a update conversion from yahoo.
 
 ## Consideration for developers
 
-TODO: comment about service, dependecy injection, ....
+1. This module use a custom service based on the library [1]. From this service you can call to *githubGetClient* to get a object from the external library and then do any call over githubAPI.
+2. The service use a variable to set a token API to call some api methods. This functionality can be extendend integrating another variable for username/password and then allow create/delete/star, ..... repo, issues, ...
+3. All routing system is over the class *GithubServiceController*
+4. After do any change is very important check code style with [5]
 
 **NOTE**: I supposs you have a fresh drupal 8 installed with standar profile.
 
 [1]: https://github.com/KnpLabs/php-github-api
 [2]: https://github.com/settings/tokens
 [3]: https://github.com/KnpLabs/php-github-api/tree/master/doc
+[4]: http://curry.netyou.co.il/demo/
+[5]: https://www.drupal.org/node/1587138
