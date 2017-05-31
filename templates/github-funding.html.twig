@@ -1,3 +1,4 @@
+{{ attach_library('github/currency') }}
 <div class="github report-pepper lastweek">
   <p class="github-info">
     {% trans %}
@@ -44,7 +45,7 @@
         </tr>
       {% endfor %}
 
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><strong>{{ 'Grand Total:' | trans }} <span class="grand-total"><span class="value">{{ total }}</span><span class="currency">$</span></span></strong></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><strong>{{ 'Grand Total:' | trans }} <span class="grand-total"><span class="value price">{{ total }}$</span></span></strong><div class="currency-convert"></div></td></tr>
     </table>
   {% else %}
     <p>

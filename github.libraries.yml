@@ -1,0 +1,9 @@
+currency:
+  version: 1.x
+  css:
+  js:
+    js/curry-0.8.1.min.js: {}
+    js/main.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
