@@ -3,9 +3,10 @@
 This project is a module implementation for drupal 8. The module is a integration between github api and drupal. Allow create a new type field for add to entities. This field allow insert a github username (will validate the username) and show some basic information about it and the sStargazer count.
 
 ## Installation
+
 1. Clone the module into the folder *modules*. (For example on this case I used *modules/custom*)
 1. This module use a third party library [1]. For install the library we need to add some code to composer.json on the root folder (drupal 8) into the section extra. Should be similar to:
-````yml
+```yml
         "merge-plugin": {
             "include": [
                 "core/composer.json",
