@@ -22,7 +22,9 @@ This project is a module implementation for drupal 8. The module is a integratio
 4. Now you can create a new github field or access to */github/ten-last-week*, */github/ten-hottest*, */github/pepper* to get some example page getting data from the github API.
 
 **NOTE**: modules/custom is a example path but you can use another path to install your modules. See https://www.drupal.org/node/2822349 for more info.
-**NOTE**: This module implement a service. You can use the service to use any mehtod implemented with the library [1] you can check [3] for more info.
+
+**NOTE**: This module implement a service. You can use the service to use any method implemented with the library [1] you can check [3] for more info.
+
 
 ## Because Drupal 8
 
