@@ -12,7 +12,7 @@ use Drupal\Core\TypedData\DataDefinition;
  *
  * @FieldType(
  *  id = "github",
- *  label = @Translation("Github Field"),
+ *  label = @Translation("Github"),
  *  default_formatter = "github_formatter",
  *  default_widget = "github_widget",
  * )
