@@ -24,7 +24,7 @@ This project is a module implementation for drupal 8. The module is a integratio
 **NOTE**: modules/custom is a example path but you can use another path to install your modules. See https://www.drupal.org/node/2822349 for more info.
 **NOTE**: This module implement a service. You can use the service to use any mehtod implemented with the library [1] you can check [3] for more info.
 
-## Because drupal 8?
+## Because Drupal 8
 
 I used drupal 8 because is the best solution to integrate a API. Drupal 8 include so good components from symfony get a better performance (Dependecy injection, ....) and more maintable code.
 TODO: Extend this section
@@ -42,8 +42,13 @@ TODO: Extend this section
 9. The next step is check the API integration. Go first to */github/ten-last-week* and you should see top 10 issues from the last week ordered by comments. On the page you have a more detailed description.
 10. Go to */github/ten-hottest* and you should see a top 10 repositories from the last week ordered by stars.
 11. Go to */github/pepper* to get a funding report.
+12. Last point is a little more complex. Is execute functional test. You have two method for this via browser or via console. On the next section I explain both method
 
 TODO: Add some pictures
+
+## Functional Test
+
+TODO: Add information about because I selected Functional Test and explain about execute both methods
 
 ## Funding report
 
