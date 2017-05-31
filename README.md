@@ -25,7 +25,6 @@ This project is a module implementation for drupal 8. The module is a integratio
 
 **NOTE**: This module implement a service. You can use the service to use any method implemented with the library [1] you can check [3] for more info.
 
-
 ## Because Drupal 8
 
 I used drupal 8 because is the best solution to integrate a API. Drupal 8 include so good components from symfony get a better performance (Dependecy injection, ....) and more maintable code.
