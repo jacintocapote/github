@@ -1,6 +1,6 @@
 # GitHub Integration with drupal 8
 
-This project is a module implementation for drupal 8. The module is a integration between github api and drupal. Allow create a new type field for add to entities. This field allow insert a github username (will validate the username) and show some basic information about it and the sStargazer count.
+This project is a module implementation for drupal 8. The module is a integration between github api and drupal. Allow create a new type field for add to entities (users, nodes, ...). This field allow insert a github username (will be validated the username) and show some basic information about it (avatar, link to github, stargazer count).
 
 ## Installation
 
@@ -27,7 +27,7 @@ This project is a module implementation for drupal 8. The module is a integratio
 
 ## Because Drupal 8
 
-I used drupal 8 because is the best solution to integrate a new API. Drupal 8 include so good components from symfony to get a better performance (Dependecy injection, ....) and more maintable code.
+I used drupal 8 because is the best solution to integrate a new API. Drupal 8 include components from symfony to get a better performance (Dependecy injection, ....) and more maintable code.
 With drupal 7 is more difficult to integrate a API or a POD system. If you want to integrate a library with symfony components, .... the best solution is D8.
 
 ## How test functional requirements
@@ -45,14 +45,13 @@ With drupal 7 is more difficult to integrate a API or a POD system. If you want 
 11. Go to */github/pepper* to get a funding report.
 12. Last point is a little more complex. Is execute functional test. You have two method for this via browser or via console. On the next section I explain both method
 
-TODO: Add some pictures
-
 ## Functional Test
 
-The functional test check two things. First thing is you can add a field github to a entity. And the second is the field is validating the github username. For execute functional you can do via browser (enabling testing module) or via console with (for example with this command from a local environment):
+The functional test check two things. First thing is you can add a field github to a entity. And the second is validating the github username. For execute functional you can do via browser (enabling testing module) or via console with (for example with this command from a local environment):
 ```
 php core/scripts/run-tests.sh --verbose --url http://drupal-8-3-2.dd:8083/  --dburl 'mysql://drupaluser@127.0.0.1:33067/drupal_8_3_2' --color --file modules/custom/github/tests/src/Functional/GithubFieldTest.php
 ```
+https://www.drupal.org/docs/8/phpunit for get more information.
 
 ## Funding report
 
