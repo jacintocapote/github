@@ -21,7 +21,14 @@ class GithubGetClient {
     $api_token = $config->get('token');
 
     $client = new \Github\Client();
-    $client->authenticate($api_token, NULL, Github\Client::AUTH_HTTP_TOKEN);
+
+    // Add api token to allow access to some specific method.
+    // You can check methods required authentication in https://developer.github.com/v3/
+    if ($api_token) {
+      $client->authenticate($api_token, NULL, Github\Client::AUTH_HTTP_TOKEN);
+    }
+    
+    //Assign the object client.
     $this->client = $client;
   }
 

@@ -1,16 +1,5 @@
 <?php
 
-use Drupal\Core\Link;
-use Drupal\Core\Url;
-
-/**
- * Implements hook_install().
- */
-function github_install() {
-  //Show message to user to insert API Token.
-  drupal_set_message(t('Please go now to <a href="@administer-page">admin/config/services/github</a> and add a valid github token', array('@administer-page' => Url::FromUri('internal:/admin/config/services/github')->toString)));
-}
-
 /**
  * Implements hook_uninstall().
  */

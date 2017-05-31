@@ -100,13 +100,35 @@ class GithubFieldTest extends BrowserTestBase {
    * Test to check github field is working and checking github username is valid.
    */
   public function testFieldGithubCreateField() {
-    $value = 'asdfeasdfeasdfeasdfeasdfeasdfeasdfeasdfeasdfe';
+    $value = 'asdfñlkasjfñlaskjfasasdas';
     
     // Display creation form.
     $this->drupalGet('entity_test/add');
 
-    // Make sure the "datetime_timestamp" widget is on the page.
+    // Make sure the "github_widget" widget is on the page.
     $fields = $this->xpath('//div[contains(@class, "field--widget-github-widget") and @id="edit-field-github-wrapper"]');
     $this->assertEquals(1, count($fields));
+
+    $edit = [
+      'field_github[0][value]' => $value,
+    ];
+    $this->drupalPostForm(NULL, $edit, 'Save');
+
+    //Check the username inserted is a invalid user on github.
+    $this->assertSession()->pageTextContains(sprintf('The github username %s is invalid. Please insert a valid username.', $value));
+
+    //Change username to a valid github user.
+    $value = 'jacintocapote';
+
+    $edit = [
+      'field_github[0][value]' => $value,
+    ];
+    $this->drupalPostForm(NULL, $edit, 'Save');
+
+    // Make sure the entity was saved.
+    preg_match('|entity_test/manage/(\d+)|', $this->getSession()->getCurrentUrl(), $match);
+    $id = $match[1];
+    $this->assertSession()->pageTextContains(sprintf('entity_test %s has been created.', $id));
+
   }
 }
