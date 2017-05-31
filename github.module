@@ -14,5 +14,8 @@ function github_theme($existing, $type, $theme, $path) {
     'github_repos' => [
       'variables' => ['repos' => NULL],
     ],
+    'github_funding' => [
+      'variables' => ['report' => NULL],
+    ],
   ];
 }

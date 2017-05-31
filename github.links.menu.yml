@@ -1,0 +1,6 @@
+github.settings:
+  title: Github Integration
+  description: 'Configure Github Integration.'
+  parent: system.admin_config_services
+  route_name: github.settings
+

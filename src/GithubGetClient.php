@@ -39,7 +39,4 @@ class GithubGetClient {
     return $this->client;
   }
 
-  public function getServiceExampleValue() {
-    return 'hola';
-  }
 }

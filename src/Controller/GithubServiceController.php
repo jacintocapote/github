@@ -77,10 +77,45 @@ class GithubServiceController extends ControllerBase {
     ];
   }
 
+  /**
+   * Routing callback to show a report for Mrs. Pepper Pots
+   */
   public function Pepper() {
+    $client = $this->serviceGithub->GithubGetClient();
+
+    //Do a search to get 10 repos (hottest), created in the last week
+    //With setPerPage we improve performance to get only first 10 items.
+    $created = date('Y-m-d', strtotime('-1 week'));
+    $repos = $client->api('search')->setPerPage(10)->repositories('created:">' . $created  . '"', 'stars', 'desc');
+    $report = $this->PepperCalculateFunding($repos); dpm($repos);
+
     return [
-      '#markup' => $this->serviceGithub->getServiceExampleValue()
+      '#theme' => 'github_projects',
+      '#report' => $report,
     ];
+  }
+
+  private function PepperCalculateFunding($repos) {
+    $data = [];
+
+    /*foreach ($repos as $repo) {
+      $project = [
+        'name' => ,
+        'url' => ,
+        'stars' => ,
+        'language' => ,
+        'watcher' =>,
+        'fork' =>,
+        'wiki' =>,
+        'downloaded' =>,
+        'issues' =>,
+        'total' =>,  
+      ];
+
+      $data[] = $project;
+    }*/
+
+    return $data;
   }
 
 }
