@@ -1,3 +1,6 @@
+#Fork
+This is a fork of the original project to correct a bug.
+
 # GitHub Integration with drupal 8
 
 This project is a module implementation for drupal 8. The module is a integration between github api and drupal. Allow create a new type field for add to entities (users, nodes, ...). This field allow insert a github username (will be validated the username) and show some basic information about it (avatar, link to github, stargazer count).
